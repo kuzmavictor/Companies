@@ -1,3 +1,4 @@
+![sxs](https://user-images.githubusercontent.com/50623799/111883315-3245df00-89c3-11eb-9978-c7226f08611d.PNG)
 # Companies Catalog 
 ![](https://img.shields.io/badge/build-success-brightgreen.svg)
 
@@ -38,3 +39,4 @@
   
 - Navigate to `http://localhost:8080/swagger-ui.html` in your browser to check everything is working correctly. 
 You should see:
+![sxs](https://user-images.githubusercontent.com/50623799/111883319-37a32980-89c3-11eb-945b-8d48345227a7.PNG)
