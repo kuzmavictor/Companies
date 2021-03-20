@@ -1,4 +1,3 @@
-![sxs](https://user-images.githubusercontent.com/50623799/111883315-3245df00-89c3-11eb-9978-c7226f08611d.PNG)
 # Companies Catalog 
 ![](https://img.shields.io/badge/build-success-brightgreen.svg)
 
