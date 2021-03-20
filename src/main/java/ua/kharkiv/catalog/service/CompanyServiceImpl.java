@@ -6,6 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.repository.Lock;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,6 +18,7 @@ import ua.kharkiv.catalog.given.Mapper;
 import ua.kharkiv.catalog.given.ObjectFieldsDiffChecker;
 import ua.kharkiv.catalog.repository.CompaniesRepository;
 
+import javax.persistence.LockModeType;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -83,6 +85,7 @@ public class CompanyServiceImpl implements CompanyService {
      */
     @Override
     @Transactional
+    @Lock(LockModeType.PESSIMISTIC_WRITE)
     public ResponseMessage add(NewCompanyData newCompanyData)
             throws CatalogOperationException {
         Company company = Mapper.entityFromNewData(newCompanyData);
@@ -99,8 +102,12 @@ public class CompanyServiceImpl implements CompanyService {
         return new ResponseMessage(message);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     @Transactional
+    @Lock(LockModeType.PESSIMISTIC_WRITE)
     public ResponseMessage delete(String companyIdentifier)
             throws CatalogOperationException {
         Optional<Company> company = companiesRepository.findById(Long.valueOf(companyIdentifier));
@@ -115,8 +122,12 @@ public class CompanyServiceImpl implements CompanyService {
         return new ResponseMessage(responseMessage);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     @Transactional
+    @Lock(LockModeType.PESSIMISTIC_WRITE)
     public ResponseMessage update(CompanyData companyData)
             throws CatalogOperationException {
         Company updatedCompany = Mapper.entityFromExistingData(companyData);

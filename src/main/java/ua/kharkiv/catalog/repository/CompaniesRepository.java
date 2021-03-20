@@ -6,4 +6,7 @@ import ua.kharkiv.catalog.entity.Company;
 
 public interface CompaniesRepository extends JpaRepository<Company, Long> {
     Company findByName(String companyName);
+
+    @Override
+    <S extends Company> S save(S s);
 }
